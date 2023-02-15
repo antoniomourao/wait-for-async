@@ -1,2 +1,12 @@
-<wait-for-async-nx-welcome></wait-for-async-nx-welcome>
+<h1>{{ title }}</h1>
 <router-outlet></router-outlet>
+
+<hr>
+
+<button (click)="increment()" class="increment">Increment</button>
+
+<button (click)="decrement()" class="decrement">Decrement</button>
+
+<p class="message">
+  {{ message }}
+</p>
