@@ -1,5 +1,8 @@
-<h1>{{ title }}</h1>
-<router-outlet></router-outlet>
+<h1>Welcome {{ title }}</h1>
+
+<hr>
+
+<h2>{{ value }}</h2>
 
 <hr>
 
@@ -10,3 +13,8 @@
 <p class="message">
   {{ message }}
 </p>
+
+
+<button (click)="setTitle()" class="set-title">
+  Set Title
+</button>
