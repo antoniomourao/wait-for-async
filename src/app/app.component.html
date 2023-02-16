@@ -6,15 +6,17 @@
 
 <hr>
 
-<button (click)="increment()" class="increment">Increment</button>
+<button mat-raised-button (click)="increment()" class="increment">
+  <mat-icon>check</mat-icon>
+  Increment</button>
 
-<button (click)="decrement()" class="decrement">Decrement</button>
+<button mat-raised-button (click)="decrement()" class="decrement">Decrement</button>
 
 <p class="message">
   {{ message }}
 </p>
 
 
-<button (click)="setTitle()" class="set-title">
+<button mat-raised-button (click)="setTitle()" class="set-title">
   Set Title
 </button>

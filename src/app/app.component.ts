@@ -2,10 +2,12 @@ import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
 import { IncrementDecrementService } from './services/increment-decrement.service';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
+  imports: [NxWelcomeComponent, RouterModule, MatButtonModule, MatIconModule],
   providers: [IncrementDecrementService],
   selector: 'wait-for-async-root',
   templateUrl: './app.component.html',

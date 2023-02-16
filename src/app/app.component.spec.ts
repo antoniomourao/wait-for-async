@@ -108,7 +108,7 @@ describe('Component Unit Testing', () => {
     expect(message).toContain('Maximum');
   }));
 
-  it('RQ08 - should display Async title', fakeAsync(() => {
+  it('RQ08 - should display Async title', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
 
     fixture.debugElement
@@ -123,7 +123,7 @@ describe('Component Unit Testing', () => {
     });
   }));
 
-  it('RQ09 - should display Async title', fakeAsync(() => {
+  it('RQ08 - should display Async title', fakeAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
 
     fixture.debugElement
