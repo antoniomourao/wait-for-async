@@ -6,11 +6,13 @@
 
 <hr>
 
-<button mat-raised-button (click)="increment()" class="increment">
-  <mat-icon>check</mat-icon>
+<button mat-raised-button color="primary" (click)="increment()" class="increment">
+  <mat-icon>arrow_circle_up</mat-icon>
   Increment</button>
 
-<button mat-raised-button (click)="decrement()" class="decrement">Decrement</button>
+<button mat-raised-button color="accent" (click)="decrement()" class="decrement">
+  <mat-icon>arrow_circle_down</mat-icon>
+  Decrement</button>
 
 <p class="message">
   {{ message }}
