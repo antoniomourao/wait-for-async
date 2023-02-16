@@ -1,24 +1,31 @@
 <h1>Welcome {{ title }}</h1>
 
-<hr>
+<hr />
 
 <h2>{{ value }}</h2>
 
-<hr>
+<hr />
 
-<button mat-raised-button color="primary" (click)="increment()" class="increment">
+<button
+  class="increment"
+  mat-raised-button
+  color="primary"
+  (click)="increment()"
+>
   <mat-icon>arrow_circle_up</mat-icon>
-  Increment</button>
+  Increment
+</button>
 
-<button mat-raised-button color="accent" (click)="decrement()" class="decrement">
+<button
+  class="decrement"
+  mat-raised-button
+  color="accent"
+  (click)="decrement()"
+>
   <mat-icon>arrow_circle_down</mat-icon>
-  Decrement</button>
+  Decrement
+</button>
 
 <p class="message">
   {{ message }}
 </p>
-
-
-<button mat-raised-button (click)="setTitle()" class="set-title">
-  Set Title
-</button>

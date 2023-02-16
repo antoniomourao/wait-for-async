@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class IncrementDecrementService {
-  MAX_VALUE = 15;
+  MAX_VALUE = 5;
 
   value = 0;
   message!: string;

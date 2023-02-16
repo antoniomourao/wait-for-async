@@ -1,48 +1,39 @@
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterModule } from '@angular/router';
 import { Component } from '@angular/core';
-import { IncrementDecrementService } from './services/increment-decrement.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   standalone: true,
   imports: [NxWelcomeComponent, RouterModule, MatButtonModule, MatIconModule],
-  providers: [IncrementDecrementService],
+  providers: [],
   selector: 'wait-for-async-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  MAX_VALUE = 5;
   title = 'wait-for-async';
+  value = 0;
 
-  get value() {
-    return this.incrementDecrement.value;
-  }
-
-  set value(value: number) {
-    this.incrementDecrement.value = value;
-  }
-
-  get message(): string {
-    return this.incrementDecrement.message;
-  }
-
-  setTitle() {
-    new Promise((resolve) => {
-      resolve('Async Title!');
-    }).then((val: any) => {
-      this.title = val;
-    });
-  }
-
-  constructor(public incrementDecrement: IncrementDecrementService) {}
+  message = '';
 
   increment() {
-    this.incrementDecrement.increment();
+    if (this.value < this.MAX_VALUE) {
+      this.value += 1;
+      this.message = '';
+    } else {
+      this.message = 'Maximum reached!';
+    }
   }
 
   decrement() {
-    this.incrementDecrement.decrement();
+    if (this.value > 0) {
+      this.value -= 1;
+      this.message = '';
+    } else {
+      this.message = 'Minimum reached!';
+    }
   }
 }

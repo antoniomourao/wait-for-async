@@ -1,16 +1,10 @@
 import {
   ComponentFixture,
-  fakeAsync,
-  flush,
   TestBed,
-  waitForAsync,
 } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
-import { RouterTestingModule } from '@angular/router/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { IncrementDecrementService } from './services/increment-decrement.service';
 
 describe('Component Unit Testing', () => {
   let component: AppComponent;
@@ -19,8 +13,8 @@ describe('Component Unit Testing', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, NxWelcomeComponent, RouterTestingModule],
-      providers: [IncrementDecrementService],
+      imports: [AppComponent],
+      providers: [],
     }).compileComponents();
   });
 
@@ -34,7 +28,7 @@ describe('Component Unit Testing', () => {
     jest.clearAllMocks();
   });
 
-  it('RQ01 - should create the app', () => {
+  it('RQ01 - should create the app component', () => {
     expect(component).toBeTruthy();
   });
 
@@ -51,38 +45,31 @@ describe('Component Unit Testing', () => {
     );
   });
 
-  it('RQ04 - should increment and decrement value', fakeAsync(() => {
+  it('RQ04 - should increment and decrement value', (() => {
     component.increment();
-    flush();
     expect(component.value).toEqual(1);
 
     component.decrement();
-    flush();
     expect(component.value).toEqual(0);
   }));
 
-  it('RQ05 - should increment value in template', fakeAsync(() => {
+  it('RQ05 - should increment value in template', (() => {
+    fixture.detectChanges();
     debugElement
       .query(By.css('button.increment'))
       .triggerEventHandler('click', null);
 
-    flush();
     fixture.detectChanges();
-
-    const element = debugElement.query(By.css('h2'));
-    expect(element).toBeDefined();
-
     const value = debugElement.query(By.css('h2')).nativeElement.innerHTML;
 
     expect(value).toEqual('1');
   }));
 
-  it('RQ06 - should stop at 0 and show minimum message', fakeAsync(() => {
+  it('RQ06 - should stop at 0 and show minimum message', (() => {
     debugElement
       .query(By.css('button.decrement'))
       .triggerEventHandler('click', null);
 
-    flush();
     fixture.detectChanges();
 
     const message = debugElement.query(By.css('p.message')).nativeElement
@@ -92,13 +79,12 @@ describe('Component Unit Testing', () => {
     expect(message).toContain('Minimum');
   }));
 
-  it('RQ07 - should stop at 15 and show maximum message', fakeAsync(() => {
+  it('RQ07 - should stop at 15 and show maximum message', (() => {
     fixture.componentInstance.value = 15;
     debugElement
       .query(By.css('button.increment'))
       .triggerEventHandler('click', null);
 
-    flush();
     fixture.detectChanges();
 
     const message = debugElement.query(By.css('p.message')).nativeElement
@@ -108,32 +94,4 @@ describe('Component Unit Testing', () => {
     expect(message).toContain('Maximum');
   }));
 
-  it('RQ08 - should display Async title', waitForAsync(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-
-    fixture.debugElement
-      .query(By.css('.set-title'))
-      .triggerEventHandler('click', null);
-
-    fixture.whenStable().then(() => {
-      fixture.detectChanges();
-      const value = fixture.debugElement.query(By.css('h1')).nativeElement
-        .innerHTML;
-      expect(value).toEqual('Welcome Async Title!');
-    });
-  }));
-
-  it('RQ08 - should display Async title', fakeAsync(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-
-    fixture.debugElement
-      .query(By.css('.set-title'))
-      .triggerEventHandler('click', null);
-
-    flush();
-    fixture.detectChanges();
-    const value = fixture.debugElement.query(By.css('h1')).nativeElement
-      .innerHTML;
-    expect(value).toEqual('Welcome Async Title!');
-  }));
 });
