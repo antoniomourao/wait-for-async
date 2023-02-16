@@ -28,4 +28,12 @@ export class IncrementDecrementService {
       }
     }, 5000); // wait 5 seconds to increment the value
   }
+
+  setTitleWithTimeout(): Promise<string> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve('Async Title!');
+      }, 4500);
+    });
+  }
 }

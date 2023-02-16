@@ -29,3 +29,10 @@
 <p class="message">
   {{ message }}
 </p>
+
+<button mat-raised-button (click)="setTitle()" class="set-title">
+  Set Title
+</button>
+<button mat-raised-button (click)="setTitleWithTimeout()" class="set-title-with-settimeout">
+  <span color="accent" >Set Title (with timeout)</span>
+</button>
